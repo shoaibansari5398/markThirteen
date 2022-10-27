@@ -46,12 +46,26 @@ function getAllDateFormats(date) {
     return [ddmmyyyy,mmddyyyy,yyyymmdd,ddmmyy,mmddyy,yymmdd];
 }
 
+function checkPalindromeForAllDateFormats(date) {
+    var listOfPalindromes = getAllDateFormats(date);
+    var flag = false;
+
+    for (let index = 0; index < listOfPalindromes.length; index++) {
+        if(isPalindrome(listOfPalindromes[index])){
+            flag = true;
+            break;
+        }
+        
+    }
+    return flag;
+}
+
 date = {
-    day:5,
-    month:3,
-    year:1998
+    day:2,
+    month:11,
+    year:2020
 }
 
 
 
-console.log(getAllDateFormats(date));
+console.log(checkPalindromeForAllDateFormats(date));
