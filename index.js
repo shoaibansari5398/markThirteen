@@ -123,7 +123,7 @@ function getNextDate(date) {
 
 }
 
-function getNextPalindrome(date) {
+function getNextPalindromeDate(date) {
     var counter = 0;
     var nextDate = getNextDate(date);
 
@@ -140,13 +140,33 @@ function getNextPalindrome(date) {
 }
 
 
+var dateInput = document.querySelector('#birthday-input');
+var showBtn = document.querySelector('#show-btn');
+var result = document.querySelector('#result');
 
-date = {
-    day:31,
-    month:12,
-    year:2020
+function clickHandler() {
+    var bdayStr = dateInput.value;
+    
+    if(bdayStr !== '')
+    {
+        var listOfDate = bdayStr.split('-');
+        var date = {
+            day:Number(listOfDate[2]),
+            month:Number(listOfDate[1]),
+            year:Number(listOfDate[0])
+        }
+
+        var isPalindrome = checkPalindromeForAllDateFormats(date);
+
+        if(isPalindrome){
+            result.innerText = "Your Birthday is Palindrome"
+        }
+        else
+        {
+            var [counter,nextDate] = getNextPalindromeDate(date)
+            result.innerText = `The next Palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year}, you missed it by ${counter} days`
+        }
+    }
+
 }
-
-
-
-console.log(getNextPalindrome(date));
+showBtn.addEventListener('click',clickHandler)
