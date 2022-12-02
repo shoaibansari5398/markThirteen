@@ -80,7 +80,7 @@ function getNextDate(date) {
     var month = date.month;
     var year = date.year;
 
-    var daysInMonth = [31,2,31,30,31,30,31,31,30,31,30,31]
+    var daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31]
 
     if(month === 2)
     {
